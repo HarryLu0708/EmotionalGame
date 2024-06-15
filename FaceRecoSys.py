@@ -25,8 +25,8 @@ while True:
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-    if "dominant_emotion" in result:
-        emotion = result["dominant_emotion"]
+    if result[0].get('dominant_emotion', None):
+        emotion = result[0].get('dominant_emotion', None)
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(frame, emotion, (50, 50), font, 3, (0, 0, 255), 2, cv2.LINE_4)
 
